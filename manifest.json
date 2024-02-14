@@ -1,0 +1,20 @@
+{
+  "name": "Happy Valentine Bae",
+  "short_name": "Happy Valentine Bae",
+  "display": "standalone",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "img/heart.svg",
+      "sizes": "192x192",
+      "type": "image/svg"
+    },
+    {
+      "src": "img/heart.svg",
+      "sizes": "512x512",
+      "type": "image/svg"
+    }
+  ]
+}
