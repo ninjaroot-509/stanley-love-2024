@@ -17,8 +17,50 @@ body {
   overflow: hidden;
 }
 
+.container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Organise les éléments enfant verticalement */
+  height: 100vh; /* Prend toute la hauteur de la vue */
+}
+
+.container div.six,
+.container div.seven,
+.container div.eight {
+  height: auto; /* Ou une hauteur spécifique si nécessaire */
+}
+
+.four .text-box,
+.six .wish,
+.baloons,
+.nine p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Centrer le texte à l'intérieur */
+  flex-direction: column; /* Pour les éléments qui doivent être organisés verticalement */
+}
+
+/* Pour centrer le contenu de `.baloons` qui contient des images */
+.baloons {
+  justify-content: space-around; /* Répartit uniformément avec de l'espace autour */
+  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si nécessaire */
+}
+
+/* Ajustements pour les svg dans .eight */
+.eight svg {
+  justify-self: center; /* Centre les SVG dans leur conteneur flex */
+}
+
+/* Puisque vous avez des images et des SVGs dans certaines divs, assurez-vous qu'ils ne dépassent pas leur conteneur */
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
 .container div.six {
-  top: 10vh;
   z-index: 1;
 }
 
@@ -27,14 +69,12 @@ body {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  top: 0;
 }
 
 .container > div {
   position: absolute;
   left: 0;
   right: 0;
-  top: 20vh;
 }
 
 .one {
@@ -131,7 +171,6 @@ body {
 .six .hat {
   position: absolute;
   width: 100px;
-  top: -35px;
   left: 41.5%;
   /* transform: scale(0.1); */
 }
@@ -157,62 +196,52 @@ body {
 .eight svg {
   width: 25px;
   position: absolute;
-  top: 0;
   left: 0;
   visibility: hidden;
   z-index: -1;
 }
 
 .eight svg:nth-child(1) {
-  top: 7vh;
   left: 5vw;
   fill: #bd6ecf;
 }
 
 .eight svg:nth-child(2) {
-  top: 23vh;
   left: 35vw;
   fill: #7dd175;
 }
 
 .eight svg:nth-child(3) {
-  top: 33vh;
   left: 23vw;
   fill: #349d8b;
 }
 
 .eight svg:nth-child(4) {
-  top: 43vh;
   left: 57vw;
   fill: #347a9d;
 }
 
 .eight svg:nth-child(5) {
-  top: 68vh;
   left: 7vw;
   fill: #c66053;
 }
 
 .eight svg:nth-child(6) {
-  top: 42vh;
   left: 77vw;
   fill: #bfaa40;
 }
 
 .eight svg:nth-child(7) {
-  top: 68vh;
   left: 83vw;
   fill: #e3bae8;
 }
 
 .eight svg:nth-child(8) {
-  top: 86vh;
   left: 37vw;
   fill: #8762cb;
 }
 
 .eight svg:nth-child(9) {
-  top: 94vh;
   left: 87vw;
   fill: #9a90da;
 }
@@ -291,7 +320,6 @@ body {
 
   .six .hat {
     width: 50px;
-    top: -20px;
   }
 
   .wish h5 {
@@ -302,4 +330,39 @@ body {
     font-size: 1.5rem;
     font-weight: lighter;
   }
+}
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#soundButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  z-index: 1000;
+  background-color: #f04;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  animation: heartbeat 2s infinite; /* Applique l'animation ici */
+}
+
+#soundButton:hover {
+  background-color: #c03;
 }

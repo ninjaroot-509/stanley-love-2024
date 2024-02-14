@@ -314,31 +314,11 @@ const animationTimeline = () => {
   });
 };
 
-// Import the data to customize and insert them into page
-const fetchData = () => {
-  fetch("customize.json")
-    .then((data) => data.json())
-    .then((data) => {
-      Object.keys(data).map((customData) => {
-        if (data[customData] !== "") {
-          if (customData === "imagePath") {
-            document
-              .getElementById(customData)
-              .setAttribute("src", data[customData]);
-          } else {
-            document.getElementById(customData).innerText = data[customData];
-          }
-        }
-      });
-    });
-};
+animationTimeline();
 
-// Run fetch and animation in sequence
-const resolveFetch = () => {
-  return new Promise((resolve, reject) => {
-    fetchData();
-    resolve("Fetch done!");
-  });
-};
-
-resolveFetch().then(animationTimeline());
+document.getElementById("soundButton").addEventListener("click", function () {
+  var audio = document.getElementById("backgroundAudio");
+  audio.muted = false;
+  audio.play();
+  this.style.display = "none"; // Cache le bouton après l'activation du son
+});
